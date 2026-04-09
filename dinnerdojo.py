@@ -7,7 +7,7 @@ def dinner_dojo(ingredients, recipes):
     for recipe in recipes:
         for ingredient in ingredients:
             if ingredient == recipe["strIngredient1"]:
-                score
+                score += 200
 
 
     # Step 3: process
