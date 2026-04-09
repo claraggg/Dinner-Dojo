@@ -58,6 +58,7 @@ def some_other_recipes():
 
 
 if __name__ == "__main__":
-    dinner_dojo(ingredients,meals)
-
+    print(ingredients['test1'])
+    suggestion = dinner_dojo(ingredients['test1'],meals)
+    for recipe
 
