@@ -1,17 +1,4 @@
-def dinner_dojo():
-    # Step 1: get user input
-    user_input = input("Enter 3 ingredients (comma separated): ").lower()
-    fridge = set(item.strip() for item in user_input.split(","))
-
-    # Step 2: recipe database
-    recipes = {
-        "grilled cheese": {"bread", "cheese", "butter"},
-        "omelet": {"eggs", "butter", "salt"},
-        "pasta aglio e olio": {"pasta", "garlic", "oil"},
-        "egg salad": {"eggs", "mayo", "salt"},
-        "toast with cheese": {"bread", "cheese"}
-    }
-
+def dinner_dojo(ingredients, recipes):
     # Step 3: process
     can_make = []
     almost = []
@@ -36,5 +23,28 @@ def dinner_dojo():
             print(f"- {r} (missing: {', '.join(missing)})")
     else:
         print("No close matches")
+
+def user_ingredients():
+ # Step 1: get user input
+    user_input = input("Enter 3 ingredients (comma separated): ").lower()
+    fridge = set(item.strip() for item in user_input.split(","))
+    return fridge
+
+def some_other_recipes():
+
+    # Step 2: recipe database
+    recipes = {
+        "grilled cheese": {"bread", "cheese", "butter"},
+        "omelet": {"eggs", "butter", "salt"},
+        "pasta aglio e olio": {"pasta", "garlic", "oil"},
+        "egg salad": {"eggs", "mayo", "salt"},
+        "toast with cheese": {"bread", "cheese"}
+    }
+
+
 if __name__ == "__main__":
+
+
     dinner_dojo()
+
+
