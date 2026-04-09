@@ -10,9 +10,10 @@ def dinner_dojo(ingredients, recipes):
             if ingredient == recipe["strIngredient1"]:
                 new_score += 200
         if new_score > score:
-            suggstion = recipe["idMeal"]
+            suggestion = recipe["idMeal"]
+    return suggestion
 
-
+'''
     # Step 3: process
     can_make = []
     almost = []
@@ -37,7 +38,7 @@ def dinner_dojo(ingredients, recipes):
             print(f"- {r} (missing: {', '.join(missing)})")
     else:
         print("No close matches")
-
+'''
 def user_ingredients():
  # Step 1: get user input
     user_input = input("Enter 3 ingredients (comma separated): ").lower()
@@ -57,8 +58,6 @@ def some_other_recipes():
 
 
 if __name__ == "__main__":
-
-
-    dinner_dojo()
+    dinner_dojo(ingredients,meals)
 
 
