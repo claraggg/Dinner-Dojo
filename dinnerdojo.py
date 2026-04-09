@@ -5,24 +5,12 @@ def dinner_dojo(ingredients, recipes):
     suggestion = ''
     score = 0
     for recipe in recipes:
+        new_score = 0
         for ingredient in ingredients:
             if ingredient == recipe["strIngredient1"]:
-                score += 200
-                if recipe["strIngredient2"] != '' and ingredient == recipe["strIngredient2"] and
-            if ingredient == recipe["strIngredient2"]:
-                score += 190
-            if ingredient == recipe["strIngredient1"]:
-                score += 180
-            if ingredient == recipe["strIngredient1"]:
-                score += 170
-            if ingredient == recipe["strIngredient1"]:
-                score += 160
-            if ingredient == recipe["strIngredient1"]:
-                score += 150
-            if ingredient == recipe["strIngredient1"]:
-                score += 140
-            if ingredient == recipe["strIngredient1"]:
-                score += 200
+                new_score += 200
+        if new_score > score:
+            suggstion = recipe["idMeal"]
 
 
     # Step 3: process
