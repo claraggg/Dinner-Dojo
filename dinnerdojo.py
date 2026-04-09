@@ -3,9 +3,11 @@ from Test_Recipes import meals
 
 def dinner_dojo(ingredients, recipes):
     suggestion = ''
+    score = 0
     for recipe in recipes:
         for ingredient in ingredients:
-            if ingredient == recipe["strIngredient1"]
+            if ingredient == recipe["strIngredient1"]:
+                score
 
 
     # Step 3: process
