@@ -5,15 +5,19 @@ def dinner_dojo(ingredients, recipes):
     suggestion = ''
     score = 0
     for recipe in recipes:
-        new_score = 0
+        points = 0
         possible_score = 0
         for ingredient in ingredients:
+            print(ingredient)
             for i in range(1,21):
                 strIng = 'strIngredient'+str(i)
                 if recipe[strIng] != '':
-                    possible_score += 10(21-i)
+                    print(recipe[strIng])
+                    possible_score += 10*(21-i)
                     if recipe[strIng] == ingredient:
-                        new_score += 10(21-i)
+                        points += 10*(21-i)
+                        print('yes points!')
+        new_score = points/possible_score
         if new_score > score:
             suggestion = recipe["strMeal"]
     return suggestion
