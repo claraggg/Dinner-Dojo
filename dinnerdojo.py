@@ -10,7 +10,7 @@ def dinner_dojo(ingredients, recipes):
             if ingredient == recipe["strIngredient1"]:
                 new_score += 200
         if new_score > score:
-            suggestion = recipe["idMeal"]
+            suggestion = recipe["strMeal"]
     return suggestion
 
 '''
@@ -58,7 +58,9 @@ def some_other_recipes():
 
 
 if __name__ == "__main__":
-    print(ingredients['test1'])
-    suggestion = dinner_dojo(ingredients['test1'],meals)
-    for recipe
+    test = 'test1'
+    print(ingredients[test])
+    suggestion = dinner_dojo(ingredients[test],meals)
+    print(suggestion)
+
 
