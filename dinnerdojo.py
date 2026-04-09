@@ -2,7 +2,11 @@ from Test_Fridge import ingredients
 from Test_Recipes import meals
 
 def dinner_dojo(ingredients, recipes):
-    
+    suggestion = ''
+    for recipe in recipes:
+        for ingredient in ingredients:
+            if ingredient == recipe["strIngredient1"]
+
 
     # Step 3: process
     can_make = []
