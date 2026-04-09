@@ -8,6 +8,21 @@ def dinner_dojo(ingredients, recipes):
         for ingredient in ingredients:
             if ingredient == recipe["strIngredient1"]:
                 score += 200
+                if recipe["strIngredient2"] != '' and ingredient == recipe["strIngredient2"] and
+            if ingredient == recipe["strIngredient2"]:
+                score += 190
+            if ingredient == recipe["strIngredient1"]:
+                score += 180
+            if ingredient == recipe["strIngredient1"]:
+                score += 170
+            if ingredient == recipe["strIngredient1"]:
+                score += 160
+            if ingredient == recipe["strIngredient1"]:
+                score += 150
+            if ingredient == recipe["strIngredient1"]:
+                score += 140
+            if ingredient == recipe["strIngredient1"]:
+                score += 200
 
 
     # Step 3: process
