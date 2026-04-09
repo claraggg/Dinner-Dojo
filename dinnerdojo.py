@@ -23,6 +23,32 @@ def dinner_dojo(ingredients, recipes):
             suggestion = recipe["strMeal"]
     return suggestion
 
+
+def user_ingredients():
+ # Step 1: get user input
+    user_input = input("Enter 3 ingredients (comma separated): ").lower()
+    fridge = set(item.strip() for item in user_input.split(","))
+    return fridge
+
+def some_other_recipes():
+
+    # Step 2: recipe database
+    recipes = {
+        "grilled cheese": {"bread", "cheese", "butter"},
+        "omelet": {"eggs", "butter", "salt"},
+        "pasta aglio e olio": {"pasta", "garlic", "oil"},
+        "egg salad": {"eggs", "mayo", "salt"},
+        "toast with cheese": {"bread", "cheese"}
+    }
+
+
+if __name__ == "__main__":
+    test = 'test2'
+    print(ingredients[test])
+    suggestion = dinner_dojo(ingredients[test],meals)
+    print(suggestion)
+
+
 '''
     # Step 3: process
     can_make = []
@@ -49,28 +75,3 @@ def dinner_dojo(ingredients, recipes):
     else:
         print("No close matches")
 '''
-def user_ingredients():
- # Step 1: get user input
-    user_input = input("Enter 3 ingredients (comma separated): ").lower()
-    fridge = set(item.strip() for item in user_input.split(","))
-    return fridge
-
-def some_other_recipes():
-
-    # Step 2: recipe database
-    recipes = {
-        "grilled cheese": {"bread", "cheese", "butter"},
-        "omelet": {"eggs", "butter", "salt"},
-        "pasta aglio e olio": {"pasta", "garlic", "oil"},
-        "egg salad": {"eggs", "mayo", "salt"},
-        "toast with cheese": {"bread", "cheese"}
-    }
-
-
-if __name__ == "__main__":
-    test = 'test2'
-    print(ingredients[test])
-    suggestion = dinner_dojo(ingredients[test],meals)
-    print(suggestion)
-
-
