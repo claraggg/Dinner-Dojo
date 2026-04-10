@@ -24,6 +24,17 @@ def dinner_dojo(ingredients, recipes):
     return suggestion
 
 
+
+if __name__ == "__main__":
+    test = 'test2'
+    print(ingredients[test])
+    suggestion = dinner_dojo(ingredients[test],meals)
+    print(suggestion)
+
+
+'''
+
+
 def user_ingredients():
  # Step 1: get user input
     user_input = input("Enter 3 ingredients (comma separated): ").lower()
@@ -41,15 +52,6 @@ def some_other_recipes():
         "toast with cheese": {"bread", "cheese"}
     }
 
-
-if __name__ == "__main__":
-    test = 'test2'
-    print(ingredients[test])
-    suggestion = dinner_dojo(ingredients[test],meals)
-    print(suggestion)
-
-
-'''
     # Step 3: process
     can_make = []
     almost = []
