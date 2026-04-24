@@ -54,7 +54,7 @@ def dinner_dojo(category,recipes):
                 ingredients.add(i)
     print(f'Here are the ingredients for recipes in {category}.')
     print(ingredients)
-    user_input = user_ingredients()
+    user_ingredients = user_ingredients()
     recipe_scores = {}
 
     for recipe in recipes:
