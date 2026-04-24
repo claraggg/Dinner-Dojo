@@ -49,7 +49,7 @@ def dinner_dojo(user_ingredients, recipes):
     ingredients = set()
     for recipe in recipes:
         recipe_ingredients = get_recipe_ingredients(recipe)
-        for i in recipe_ingredients.values():
+        for i in recipe_ingredients:
             if i not in ingredients:
                 ingredients.add(i)
         print(f'Here are the ingredients for recipes in {recipes}.')
