@@ -130,24 +130,3 @@ if __name__ == "__main__":
 
     print("\nBest suggestion:")
     print(matches[0])
-    '''
-    print("\nMissing ingredients:")
-    if missing:
-        print(", ".join(missing))
-    else:
-        print("You have everything!")
-
-    print("\nYou can make:")
-    if can_make:
-        for meal in can_make:
-            print("-", meal)
-    else:
-        print("Nothing exact")
-
-    print("\nAlmost there:")
-    if almost_there:
-        for meal, missing_items in almost_there:
-            print(f"- {meal} (missing: {', '.join(missing_items)})")\
-    else:
-        print("No close matches")
-    '''
