@@ -110,3 +110,17 @@ if __name__ == "__main__":
 
     print("\nBest suggestion:")
     print(matches[0])
+    recipe = 0
+    while True:
+        make = input('Do you want to make this? Y/N ')
+        if make == 'N':
+            recipe +=1
+            try:
+                print(matches[recipe])
+            except IndexError:
+                print(f'No more {category} recipes!')
+        elif make == 'Y':
+            print(f'{category} dish = {matches[recipe]}')
+            break
+        else:
+            print('Answer must be Y or N!')
