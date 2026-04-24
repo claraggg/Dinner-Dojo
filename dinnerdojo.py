@@ -74,7 +74,8 @@ def dinner_dojo(user_ingredients, recipes):
             else:
                 missing.append(ingredient)
         recipe_scores[recipe]= points/possible_score
-
+    return recipe_scores.sorted()
+'''
         if len(matched) > 0:
             score = len(matched) / len(recipe_ingredients)
         else:
@@ -94,7 +95,7 @@ def dinner_dojo(user_ingredients, recipes):
     almost_there = [item for item in almost_there if item[0] != best_suggestion]
 
     return best_suggestion, best_missing, can_make, almost_there
-
+'''
 def choose_category():
     categories = [
         "Beef", "Chicken", "Dessert", "Lamb", "Miscellaneous",
@@ -116,9 +117,6 @@ def user_ingredients():
 
 if __name__ == "__main__":
     category = choose_category()
-    user_input = user_ingredients()
-    print("Your ingredients:")
-    print(user_input)
     print(f"\nFetching {category} recipes...\n")
     meals = get_meals_from_api(category)
     if not meals:
