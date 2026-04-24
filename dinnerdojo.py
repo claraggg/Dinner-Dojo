@@ -74,7 +74,7 @@ def dinner_dojo(user_ingredients, recipes):
             else:
                 missing.append(ingredient)
         recipe_scores[recipe]= points/possible_score
-    return recipe_scores.sorted()
+    return recipe_scores
 '''
         if len(matched) > 0:
             score = len(matched) / len(recipe_ingredients)
