@@ -67,7 +67,7 @@ def dinner_dojo(user_ingredients, recipes):
         if len(missing) == 0:
             can_make.append(recipe["strMeal"])
 
-        elif len(matched) >= 2:
+        elif len(matched) >= 2 and recipe["strMeal"] != best_suggestion:
             almost_there.append((recipe["strMeal"], missing))
 
         if score > best_score:
