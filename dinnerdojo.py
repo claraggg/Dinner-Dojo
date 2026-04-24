@@ -97,12 +97,11 @@ def user_ingredients():
 
 
 if __name__ == "__main__":
+    category = choose_category()
     user_input = user_ingredients()
-
     print("Your ingredients:")
     print(user_input)
-
-    category = choose_category()
+    print(f"\nFetching {category} recipes...\n")
     meals = get_meals_from_api(category)
     if not meals:
         print("No meals found for that category.")
