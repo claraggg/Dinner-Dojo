@@ -1,16 +1,15 @@
 import requests
-import 
 #from Test_Recipes import meals
 
 
 def get_recipe_ingredients(recipe):
-    recipe_ingredients = []
+    recipe_ingredients = {}
 
     for i in range(1, 21):
         strIng = "strIngredient" + str(i)
 
         if recipe[strIng]:
-            recipe_ingredients.append(recipe[strIng])
+            recipe_ingredients[recipe[strIng]] = i
 
     return recipe_ingredients
 
@@ -47,6 +46,15 @@ def dinner_dojo(user_ingredients, recipes):
 
     can_make = []
     almost_there = []
+    ingredients = set()
+    for recipe in recipes:
+        recipe_ingredients = get_recipe_ingredients(recipe)
+        for i in recipe_ingredients:
+            if i not in ingredients:
+                ingredients.add(i)
+        print(f'Here are the ingredients for recipes in {recipes}.')
+        print(ingredients)
+        user_input = user_ingredients()
 
     for recipe in recipes:
         recipe_ingredients = get_recipe_ingredients(recipe)
