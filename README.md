@@ -17,3 +17,8 @@ The program then outputs:
 1. Make sure you have Python installed
 3. Run the program: python3 dinner_dojo.py
 4. Follow the prompts
+
+## Sources
+Recipe data is retrieved from TheMealDB, API for meal recipes:
+https://www.themealdb.com/api.php
+
