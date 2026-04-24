@@ -70,9 +70,8 @@ def dinner_dojo(user_ingredients, recipes):
 
 def user_ingredients():
     user_input = input("Enter ingredients (comma separated): ")
-    return [item.strip() for item in user_input.split(",")]
-    for ingredient in recipe_ingredients:
-    if ingredient.lower() in user_ingredients:
+    return [item.strip().lower() for item in user_input.split(",")]
+
 
 if __name__ == "__main__":
     user_input = user_ingredients()
