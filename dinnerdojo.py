@@ -1,5 +1,4 @@
 import requests
-from Test_Fridge import ingredients
 #from Test_Recipes import meals
 
 
@@ -77,6 +76,7 @@ def dinner_dojo(user_ingredients, recipes):
             best_missing = missing
 
     return best_suggestion, best_missing, can_make, almost_there
+
 def choose_category():
     categories = [
         "Beef", "Chicken", "Dessert", "Lamb", "Miscellaneous",
@@ -104,6 +104,9 @@ if __name__ == "__main__":
 
     category = choose_category()
     meals = get_meals_from_api(category)
+    if not meals:
+        print("No meals found for that category.")
+        exit()
     suggestion, missing, can_make, almost_there = dinner_dojo(user_input, meals)
 
     print("\nBest suggestion:")
