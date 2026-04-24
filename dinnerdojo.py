@@ -1,5 +1,7 @@
+import requests
 from Test_Fridge import ingredients
-from Test_Recipes import meals
+from Test_Fridge import ingredients
+#from Test_Recipes import meals
 
 
 def get_recipe_ingredients(recipe):
@@ -12,6 +14,16 @@ def get_recipe_ingredients(recipe):
             recipe_ingredients.append(recipe[strIng])
 
     return recipe_ingredients
+
+def get_meals_from_api():
+    url = "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
+    response = requests.get(url)
+    data = response.json()
+
+    if data["meals"] is None:
+        return []
+
+    return data["meals"]
 
 
 def dinner_dojo(user_ingredients, recipes):
@@ -59,6 +71,7 @@ if __name__ == "__main__":
     print("Your ingredients:")
     print(ingredients[test])
 
+    meals = get_meals_from_api()
     suggestion, missing, can_make, almost_there = dinner_dojo(ingredients[test], meals)
 
     print("\nBest suggestion:")
