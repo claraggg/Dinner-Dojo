@@ -55,6 +55,7 @@ def dinner_dojo(user_ingredients, recipes):
         print(f'Here are the ingredients for recipes in {recipes}.')
         print(ingredients)
         user_input = user_ingredients()
+    recipe_scores = {}
 
     for recipe in recipes:
         recipe_ingredients = get_recipe_ingredients(recipe)
@@ -65,12 +66,14 @@ def dinner_dojo(user_ingredients, recipes):
         matched = []
         missing = []
 
+
         for ingredient in recipe_ingredients:
             if ingredient.lower() in user_ingredients:
                 points += 10*(21-recipe_ingredients[ingredient])
                 matched.append(ingredient)
             else:
                 missing.append(ingredient)
+        recipe_scores[recipe]= points/possible_score
 
         if len(matched) > 0:
             score = len(matched) / len(recipe_ingredients)
