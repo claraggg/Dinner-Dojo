@@ -1,6 +1,5 @@
 import requests
 from Test_Fridge import ingredients
-from Test_Fridge import ingredients
 #from Test_Recipes import meals
 
 
