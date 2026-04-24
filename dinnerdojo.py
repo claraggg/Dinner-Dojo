@@ -39,7 +39,7 @@ def get_meals_from_api(category):
     return meals
 
 
-def dinner_dojo(user_ingredients, recipes):
+def dinner_dojo(category,recipes):
     best_suggestion = ""
     best_score = 0
     best_missing = []
@@ -52,9 +52,9 @@ def dinner_dojo(user_ingredients, recipes):
         for i in recipe_ingredients:
             if i not in ingredients:
                 ingredients.add(i)
-        print(f'Here are the ingredients for recipes in {recipes}.')
-        print(ingredients)
-        user_input = user_ingredients()
+    print(f'Here are the ingredients for recipes in {category}.')
+    print(ingredients)
+    user_input = user_ingredients()
     recipe_scores = {}
 
     for recipe in recipes:
@@ -126,11 +126,11 @@ if __name__ == "__main__":
     if not meals:
         print("No meals found for that category.")
         exit()
-    matches = dinner_dojo(meals)
+    matches = dinner_dojo(category,meals)
 
     print("\nBest suggestion:")
     print(matches[0])
-
+    '''
     print("\nMissing ingredients:")
     if missing:
         print(", ".join(missing))
@@ -147,6 +147,7 @@ if __name__ == "__main__":
     print("\nAlmost there:")
     if almost_there:
         for meal, missing_items in almost_there:
-            print(f"- {meal} (missing: {', '.join(missing_items)})")
+            print(f"- {meal} (missing: {', '.join(missing_items)})")\
     else:
         print("No close matches")
+    '''
