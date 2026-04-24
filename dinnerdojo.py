@@ -48,32 +48,26 @@ def dinner_dojo(user_ingredients, recipes):
     almost_there = []
 
     for recipe in recipes:
-        points = 0
-        possible_score = 0
+        recipe_ingredients = get_recipe_ingredients(recipe)
+
+        matched = []
         missing = []
 
-        for i in range(1, 21):
-            strIng = "strIngredient" + str(i)
-            ingredient = recipe[strIng]
+        for ingredient in recipe_ingredients:
+            if ingredient.lower() in user_ingredients:
+                matched.append(ingredient)
+            else:
+                missing.append(ingredient)
 
-            if ingredient:
-                weight = 10 * (21 - i)
-                possible_score += weight
-
-                if ingredient.lower() in user_ingredients:
-                    points += weight
-                else:
-                    missing.append(ingredient)
-
-        if possible_score > 0:
-            score = points / possible_score
+        if len(recipe_ingredients) > 0:
+            score = len(matched) / len(recipe_ingredients)
         else:
             score = 0
 
         if len(missing) == 0:
             can_make.append(recipe["strMeal"])
 
-        elif (points > 0):  # at least something matched
+        elif len(matched) >= 2:
             almost_there.append((recipe["strMeal"], missing))
 
         if score > best_score:
@@ -84,36 +78,7 @@ def dinner_dojo(user_ingredients, recipes):
     almost_there = [item for item in almost_there if item[0] != best_suggestion]
 
     return best_suggestion, best_missing, can_make, almost_there
-🧠 What this does (quickly)
-gives higher weight to earlier ingredients
 
-calculates:
-
-score = weighted_matches / total_possible_weight
-still supports:
-best suggestion ✅
-can_make ✅
-almost_there ✅
-🎤 What you can say in your video
-
-“I initially implemented a weighted scoring system that prioritized earlier ingredients in the recipe, but later simplified it to a ratio-based system for clarity and maintainability.”
-
-🔥 This is very strong academically — shows iteration.
-
-⚡ My honest advice
-
-👉 Keep your current simple system in final code
-👉 Mention the weighted one as a design iteration
-
-That way you:
-
-show complexity ✅
-show improvement ✅
-don’t risk bugs in demo 😌
-
-If you want, I can also help you:
-👉 quickly compare outputs (weighted vs simple) for your demo
-👉 or decide which one looks better live (important lol)
 def choose_category():
     categories = [
         "Beef", "Chicken", "Dessert", "Lamb", "Miscellaneous",
