@@ -75,7 +75,10 @@ def dinner_dojo(user_ingredients, recipes):
                 missing.append(ingredient)
         recipe_scores[recipe]= points/possible_score
     sorted_recipes= dict(sorted(recipe_scores.items(), key=lambda item: item[1], reverse=True))
-    return sorted_recipes
+    matches = ()
+    for i in sorted_recipes:
+        matches.append(i)
+    return matches
 '''
         if len(matched) > 0:
             score = len(matched) / len(recipe_ingredients)
@@ -123,10 +126,10 @@ if __name__ == "__main__":
     if not meals:
         print("No meals found for that category.")
         exit()
-    suggestion, missing, can_make, almost_there = dinner_dojo(user_input, meals)
+    matches = dinner_dojo(meals)
 
     print("\nBest suggestion:")
-    print(suggestion)
+    print(matches[0])
 
     print("\nMissing ingredients:")
     if missing:
