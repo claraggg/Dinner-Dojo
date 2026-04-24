@@ -14,8 +14,8 @@ def get_recipe_ingredients(recipe):
 
     return recipe_ingredients
 
-def get_meals_from_api():
-    url = "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
+def get_meals_from_api(category):
+    url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + category
 
     try:
         response = requests.get(url)
@@ -27,7 +27,17 @@ def get_meals_from_api():
     if data["meals"] is None:
         return []
 
-    return data["meals"]
+    meals = []
+
+    for meal in data["meals"]:
+        full_url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + meal["idMeal"]
+        full_response = requests.get(full_url)
+        full_data = full_response.json()
+
+        if full_data["meals"]:
+            meals.append(full_data["meals"][0])
+
+    return meals
 
 
 def dinner_dojo(user_ingredients, recipes):
@@ -67,6 +77,19 @@ def dinner_dojo(user_ingredients, recipes):
             best_missing = missing
 
     return best_suggestion, best_missing, can_make, almost_there
+def choose_category():
+    categories = [
+        "Beef", "Chicken", "Dessert", "Lamb", "Miscellaneous",
+        "Pasta", "Pork", "Seafood", "Side", "Starter",
+        "Vegan", "Vegetarian", "Breakfast", "Goat"
+    ]
+
+    print("Choose a category:")
+    for category in categories:
+        print("-", category)
+
+    user_category = input("\nEnter category: ").strip().title()
+    return user_category
 
 def user_ingredients():
     user_input = input("Enter ingredients (comma separated): ")
@@ -79,7 +102,8 @@ if __name__ == "__main__":
     print("Your ingredients:")
     print(user_input)
 
-    meals = get_meals_from_api()
+    category = choose_category()
+    meals = get_meals_from_api(category)
     suggestion, missing, can_make, almost_there = dinner_dojo(user_input, meals)
 
     print("\nBest suggestion:")
