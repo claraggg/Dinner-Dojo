@@ -54,7 +54,7 @@ def dinner_dojo(category,recipes):
                 ingredients.add(i)
     print(f'Here are the ingredients for recipes in {category}.')
     print(ingredients)
-    user_ingredients = user_ingredients()
+    ingredients = user_ingredients()
     recipe_scores = {}
 
     for recipe in recipes:
@@ -68,7 +68,7 @@ def dinner_dojo(category,recipes):
 
 
         for ingredient in recipe_ingredients:
-            if ingredient.lower() in user_ingredients:
+            if ingredient.lower() in ingredients:
                 points += 10*(21-recipe_ingredients[ingredient])
                 matched.append(ingredient)
             else:
