@@ -45,7 +45,7 @@ def dinner_dojo(user_ingredients, recipes):
         missing = []
 
         for ingredient in recipe_ingredients:
-            if ingredient in user_ingredients:
+            if ingredient.lower() in user_ingredients:
                 matched.append(ingredient)
             else:
                 missing.append(ingredient)
