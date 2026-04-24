@@ -20,6 +20,7 @@ def dinner_dojo(ingredients, recipes):
                         #print('yes points!')
         new_score = points/possible_score
         if new_score > score:
+                score = new_score
             suggestion = recipe["strMeal"]
     return suggestion
 
