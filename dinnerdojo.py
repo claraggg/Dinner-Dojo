@@ -79,27 +79,7 @@ def dinner_dojo(category,recipes):
     for i in sorted_recipes:
         matches.append(i)
     return matches
-'''
-        if len(matched) > 0:
-            score = len(matched) / len(recipe_ingredients)
-        else:
-            score = 0
 
-        if len(missing) == 0:
-            can_make.append(recipe["strMeal"])
-
-        elif len(matched) >= 2:
-            almost_there.append((recipe["strMeal"], missing))
-
-        if score > best_score:
-            best_score = score
-            best_suggestion = recipe["strMeal"]
-            best_missing = missing
-
-    almost_there = [item for item in almost_there if item[0] != best_suggestion]
-
-    return best_suggestion, best_missing, can_make, almost_there
-'''
 def choose_category():
     categories = [
         "Beef", "Chicken", "Dessert", "Lamb", "Miscellaneous",
