@@ -68,15 +68,20 @@ def dinner_dojo(user_ingredients, recipes):
 
     return best_suggestion, best_missing, can_make, almost_there
 
+def user_ingredients():
+    user_input = input("Enter ingredients (comma separated): ")
+    return [item.strip() for item in user_input.split(",")]
+    for ingredient in recipe_ingredients:
+    if ingredient.lower() in user_ingredients:
 
 if __name__ == "__main__":
-    test = "test2"
+    user_input = user_ingredients()
 
     print("Your ingredients:")
-    print(ingredients[test])
+    print(user_input)
 
     meals = get_meals_from_api()
-    suggestion, missing, can_make, almost_there = dinner_dojo(ingredients[test], meals)
+    suggestion, missing, can_make, almost_there = dinner_dojo(user_input, meals)
 
     print("\nBest suggestion:")
     print(suggestion)
