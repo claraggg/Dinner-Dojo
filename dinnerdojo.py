@@ -9,15 +9,20 @@ def get_recipe_ingredients(recipe):
     for i in range(1, 21):
         strIng = "strIngredient" + str(i)
 
-        if recipe[strIng] != "":
+        if recipe[strIng]:
             recipe_ingredients.append(recipe[strIng])
 
     return recipe_ingredients
 
 def get_meals_from_api():
     url = "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
-    response = requests.get(url)
-    data = response.json()
+
+    try:
+        response = requests.get(url)
+        data = response.json()
+    except:
+        print("Could not connect to API.")
+        return []
 
     if data["meals"] is None:
         return []
