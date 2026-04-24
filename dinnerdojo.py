@@ -1,80 +1,85 @@
 from Test_Fridge import ingredients
 from Test_Recipes import meals
 
-def dinner_dojo(ingredients, recipes):
-    suggestion = ''
-    score = 0
-    for recipe in recipes:
-        #print(f'{recipe['strMeal']}')
-        points = 0
-        possible_score = 0
-        for ingredient in ingredients:
-            for i in range(1,21):
-                strIng = 'strIngredient'+str(i)
-                if recipe[strIng] != '':
-                    #print(recipe[strIng])
-                    possible_score += 10*(21-i)
-                    if recipe[strIng] == ingredient:
-                        points += 10*(21-i)
-                        #print('Here is the ingredient: '+ingredient)
-                        #print('yes points!')
-        new_score = points/possible_score
-        if new_score > score:
-                score = new_score
-            suggestion = recipe["strMeal"]
-    return suggestion
 
+def get_recipe_ingredients(recipe):
+    recipe_ingredients = []
+
+    for i in range(1, 21):
+        strIng = "strIngredient" + str(i)
+
+        if recipe[strIng] != "":
+            recipe_ingredients.append(recipe[strIng])
+
+    return recipe_ingredients
+
+
+def dinner_dojo(user_ingredients, recipes):
+    best_suggestion = ""
+    best_score = 0
+    best_missing = []
+
+    can_make = []
+    almost_there = []
+
+    for recipe in recipes:
+        recipe_ingredients = get_recipe_ingredients(recipe)
+
+        matched = []
+        missing = []
+
+        for ingredient in recipe_ingredients:
+            if ingredient in user_ingredients:
+                matched.append(ingredient)
+            else:
+                missing.append(ingredient)
+
+        if len(recipe_ingredients) > 0:
+            score = len(matched) / len(recipe_ingredients)
+        else:
+            score = 0
+
+        if len(missing) == 0:
+            can_make.append(recipe["strMeal"])
+
+        elif len(matched) >= 2:
+            almost_there.append((recipe["strMeal"], missing))
+
+        if score > best_score:
+            best_score = score
+            best_suggestion = recipe["strMeal"]
+            best_missing = missing
+
+    return best_suggestion, best_missing, can_make, almost_there
 
 
 if __name__ == "__main__":
-    test = 'test2'
+    test = "test2"
+
+    print("Your ingredients:")
     print(ingredients[test])
-    suggestion = dinner_dojo(ingredients[test],meals)
+
+    suggestion, missing, can_make, almost_there = dinner_dojo(ingredients[test], meals)
+
+    print("\nBest suggestion:")
     print(suggestion)
 
+    print("\nMissing ingredients:")
+    if missing:
+        print(", ".join(missing))
+    else:
+        print("You have everything!")
 
-'''
-
-
-def user_ingredients():
- # Step 1: get user input
-    user_input = input("Enter 3 ingredients (comma separated): ").lower()
-    fridge = set(item.strip() for item in user_input.split(","))
-    return fridge
-
-def some_other_recipes():
-
-    # Step 2: recipe database
-    recipes = {
-        "grilled cheese": {"bread", "cheese", "butter"},
-        "omelet": {"eggs", "butter", "salt"},
-        "pasta aglio e olio": {"pasta", "garlic", "oil"},
-        "egg salad": {"eggs", "mayo", "salt"},
-        "toast with cheese": {"bread", "cheese"}
-    }
-
-    # Step 3: process
-    can_make = []
-    almost = []
-
-    for recipe, ingredients in recipes.items():
-        if ingredients.issubset(fridge):
-            can_make.append(recipe)
-        elif len(ingredients.intersection(fridge)) >= 2:
-            almost.append((recipe, ingredients - fridge))
-
-    # Step 4: output
     print("\nYou can make:")
     if can_make:
-        for r in can_make:
-            print("-", r)
+        for meal in can_make:
+            print("-", meal)
     else:
         print("Nothing exact")
 
-    print("\n Almost there:")
-    if almost:
-        for r, missing in almost:
-            print(f"- {r} (missing: {', '.join(missing)})")
+    print("\nAlmost there:")
+    if almost_there:
+        for meal, missing_items in almost_there:
+            print(f"- {meal} (missing: {', '.join(missing_items)})")
     else:
         print("No close matches")
-'''
