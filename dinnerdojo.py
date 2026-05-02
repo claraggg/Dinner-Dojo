@@ -9,7 +9,7 @@ def get_recipe_ingredients(recipe):
         strIng = "strIngredient" + str(i)
 
         if recipe[strIng]:
-            recipe_ingredients[recipe[strIng]] = i
+            recipe_ingredients[recipe[strIng].lower()] = i
 
     return recipe_ingredients
 
@@ -40,12 +40,6 @@ def get_meals_from_api(category):
 
 
 def dinner_dojo(category,recipes):
-    best_suggestion = ""
-    best_score = 0
-    best_missing = []
-
-    can_make = []
-    almost_there = []
     ingredients = set()
     for recipe in recipes:
         recipe_ingredients = get_recipe_ingredients(recipe)
@@ -53,7 +47,8 @@ def dinner_dojo(category,recipes):
             if i not in ingredients:
                 ingredients.add(i)
     print(f'Here are the ingredients for recipes in {category}.')
-    print(ingredients)
+    for i in sorted(ingredients):
+        print(i)
     ingredients = user_ingredients()
     recipe_scores = {}
 
