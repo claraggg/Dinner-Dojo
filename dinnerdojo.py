@@ -1,6 +1,8 @@
 import requests
 #from Test_Recipes import meals
 
+import webbrowser
+
 
 def get_recipe_ingredients(recipe):
     recipe_ingredients = {}
