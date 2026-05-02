@@ -107,8 +107,12 @@ if __name__ == "__main__":
         exit()
     matches, recipe_matched, recipe_missing = dinner_dojo(category,meals)
 
+    meal_str = matches[0]
+best_meal_name = matches[0]
+best_meal = next(m for m in meals if m["strMeal"] == best_meal_name)
+
+print("Thumbnail URL:", best_meal["strMealThumb"])
     print("\nBest suggestion:")
-    print("Thumbnail URL:", matches[0]["strMealThumb"])
     print(matches[0])
     print("You have these ingredients: ",recipe_matched[matches[0]])
     print("You are missing these ingredients: ",recipe_missing[matches[0]])
