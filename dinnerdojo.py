@@ -71,6 +71,8 @@ def dinner_dojo(category,recipes):
             else:
                 missing.append(ingredient)
         recipe_scores[recipe["strMeal"]]= (points/possible_score)
+        recipe_matched[recipe["strMeal"]] = matched
+        recipe_missing[recipe["strMeal"]] = missing
     sorted_recipes= dict(sorted(recipe_scores.items(), key=lambda item: item[1], reverse=True))
     matches = []
     for i in sorted_recipes:
