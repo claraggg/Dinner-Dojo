@@ -113,18 +113,27 @@ if __name__ == "__main__":
     best_meal = next(m for m in meals if m["strMeal"] == best_meal_name)
     print("\nBest suggestion:")
     print(matches[0])
-    webbrowser.open(best_meal["strMealThumb"])
     print("You have these ingredients: ",recipe_matched[matches[0]])
     print("You are missing these ingredients: ",recipe_missing[matches[0]])
+    picture = input("Would you like to see a picture? Y/N")
+    if picture == 'Y':
+        webbrowser.open(best_meal["strMealThumb"])
+
     recipe = 0
     while True:
         make = input('Do you want to make this? Y/N ')
         if make == 'N':
             recipe +=1
             try:
+                meal_name = matches[recipe]
+                meal = next(m for m in meals if m["strMeal"] == meal_name)
                 print(matches[recipe])
                 print("You have these ingredients: ",recipe_matched[matches[recipe]])
                 print("You are missing these ingredients: ",recipe_missing[matches[recipe]])
+                picture = input("Would you like to see a picture? Y/N")
+                if picture == 'Y':
+                    webbrowser.open(meal["strMealThumb"])
+
             except IndexError:
                 print(f'No more {category} recipes!')
         elif make == 'Y':
