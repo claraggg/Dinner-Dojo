@@ -109,15 +109,15 @@ if __name__ == "__main__":
         exit()
     matches, recipe_matched, recipe_missing = dinner_dojo(category,meals)
 
-    best_meal_name = matches[0]
-    best_meal = next(m for m in meals if m["strMeal"] == best_meal_name)
+    meal_name = matches[0]
+    meal = next(m for m in meals if m["strMeal"] == meal_name)
     print("\nBest suggestion:")
     print(matches[0])
     print("You have these ingredients: ",recipe_matched[matches[0]])
     print("You are missing these ingredients: ",recipe_missing[matches[0]])
     picture = input("Would you like to see a picture? Y/N")
     if picture == 'Y':
-        webbrowser.open(best_meal["strMealThumb"])
+        webbrowser.open(meal["strMealThumb"])
 
     recipe = 0
     while True:
@@ -137,7 +137,11 @@ if __name__ == "__main__":
             except IndexError:
                 print(f'No more {category} recipes!')
         elif make == 'Y':
-            print(f'{category} dish = {matches[recipe]}')
+            print(f'{category} dish = {meal_name}')
+            for i in range(1,21):
+                strIng = "strIngredient" + str(i)
+                if meal[strIng] not empty
+
             break
         else:
             print('Answer must be Y or N!')
