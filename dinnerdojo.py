@@ -115,7 +115,7 @@ if __name__ == "__main__":
     print(matches[0])
     print("You have these ingredients: ",recipe_matched[matches[0]])
     print("You are missing these ingredients: ",recipe_missing[matches[0]])
-    picture = input("Would you like to see a picture? Y/N")
+    picture = input("Would you like to see a picture? Y/N ")
     if picture == 'Y':
         webbrowser.open(meal["strMealThumb"])
 
@@ -125,12 +125,13 @@ if __name__ == "__main__":
         if make == 'N':
             recipe +=1
             try:
+                print('\nNext best suggestion: ')
                 meal_name = matches[recipe]
                 meal = next(m for m in meals if m["strMeal"] == meal_name)
                 print(matches[recipe])
                 print("You have these ingredients: ",recipe_matched[matches[recipe]])
                 print("You are missing these ingredients: ",recipe_missing[matches[recipe]])
-                picture = input("Would you like to see a picture? Y/N")
+                picture = input("Would you like to see a picture? Y/N ")
                 if picture == 'Y':
                     webbrowser.open(meal["strMealThumb"])
 
