@@ -143,7 +143,7 @@ if __name__ == "__main__":
                 strIng = "strIngredient" + str(i)
                 strMeas = "strMeasure" + str(i)
                 if meal[strIng]:
-                    print(f'{strMeas} {strIng}')
+                    print(f'{meal[strMeas]} {meal[strIng]}')
             print('Instructions')
             print(meal['strInstructions'])
 
