@@ -77,7 +77,7 @@ def dinner_dojo(category,recipes):
     matches = []
     for i in sorted_recipes:
         matches.append(i)
-    return matches
+    return matches, recipe_matched, recipe_missing
 
 def choose_category():
     categories = [
@@ -105,10 +105,12 @@ if __name__ == "__main__":
     if not meals:
         print("No meals found for that category.")
         exit()
-    matches = dinner_dojo(category,meals)
+    matches, recipe_matched, recipe_missing = dinner_dojo(category,meals)
 
     print("\nBest suggestion:")
     print(matches[0])
+    print("You have these ingredients: ",recipe_matched[matches[0]])
+    print("You are missing these ingredients: ",recipe_missing[matches[0]])
     recipe = 0
     while True:
         make = input('Do you want to make this? Y/N ')
