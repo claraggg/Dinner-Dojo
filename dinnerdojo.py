@@ -51,6 +51,8 @@ def dinner_dojo(category,recipes):
         print(i)
     ingredients = user_ingredients()
     recipe_scores = {}
+    recipe_matched = {}
+    recipe_missing = {}
 
     for recipe in recipes:
         recipe_ingredients = get_recipe_ingredients(recipe)
