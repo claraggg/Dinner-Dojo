@@ -118,6 +118,8 @@ if __name__ == "__main__":
             recipe +=1
             try:
                 print(matches[recipe])
+                print("You have these ingredients: ",recipe_matched[matches[recipe]])
+                print("You are missing these ingredients: ",recipe_missing[matches[recipe]])
             except IndexError:
                 print(f'No more {category} recipes!')
         elif make == 'Y':
