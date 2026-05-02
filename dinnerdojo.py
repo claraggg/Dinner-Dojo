@@ -138,9 +138,14 @@ if __name__ == "__main__":
                 print(f'No more {category} recipes!')
         elif make == 'Y':
             print(f'{category} dish = {meal_name}')
+            print('Ingredients: ')
             for i in range(1,21):
                 strIng = "strIngredient" + str(i)
-                if meal[strIng] not empty
+                strMeas = "strMeasure" + str(i)
+                if meal[strIng]:
+                    print(f'{strMeas} {strIng}')
+            print('Instructions')
+            print(meal['strInstructions'])
 
             break
         else:
