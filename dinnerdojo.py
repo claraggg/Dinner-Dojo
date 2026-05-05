@@ -75,7 +75,7 @@ def dinner_dojo(category,recipes): #evaluate best matches
     for recipe in recipes:
         recipe_ingredients = get_recipe_ingredients(recipe)
 
-        possible_score = 10*(len(recipe_ingredients)) #evaluate total possible score
+        possible_score = 0
         points = 0
 
         matched = [] #create a list of ingredients in the recipe the user has
@@ -85,8 +85,10 @@ def dinner_dojo(category,recipes): #evaluate best matches
         for ingredient in recipe_ingredients:
             if ingredient.lower() in ingredients:
                 points += 10*(21-recipe_ingredients[ingredient])
+                possible_score += 10*(21-recipe_ingredients[ingredient])
                 matched.append(ingredient)
             else:
+                possible_score += 10*(21-recipe_ingredients[ingredient])
                 missing.append(ingredient)
 
         recipe_scores[recipe["strMeal"]]= (points/possible_score) #percentage math
