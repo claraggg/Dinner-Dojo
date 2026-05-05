@@ -1,10 +1,9 @@
-import requests
-#from Test_Recipes import meals
+import requests #import requests to help process the api
 
-import webbrowser
+import webbrowser #import webbrowser to open thumbnail links
 
 
-def get_recipe_ingredients(recipe):
+def get_recipe_ingredients(recipe): #takes the recipe and outputs the ingredients and weighted score
     recipe_ingredients = {}
 
     for i in range(1, 21):
