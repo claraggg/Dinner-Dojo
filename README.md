@@ -24,3 +24,4 @@ python3 dinner_dojo.py
 - Review suggested recipes
 ### Sources
 TheMealDB API
+Generative AI used to assist with the API connection (no code written, just trouble-shooting the API connection and explaining errors in our code) and used to help sort the matches (wrote line 96).
