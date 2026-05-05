@@ -62,7 +62,7 @@ def dinner_dojo(category,recipes): #evaluate best matches
         recipe_ingredients = get_recipe_ingredients(recipe)
         for i in recipe_ingredients:
             if i not in category_ingredients:
-                ingredients.add(i)
+                category_ingredients.add(i)
     print(f'Here are the ingredients for recipes in {category}.')
     for i in sorted(category_ingredients):
         print(i)
@@ -75,7 +75,7 @@ def dinner_dojo(category,recipes): #evaluate best matches
     for recipe in recipes:
         recipe_ingredients = get_recipe_ingredients(recipe)
 
-        possible_score = 10*(21-len(recipe_ingredients)) #evaluate total possible score
+        possible_score = 10*(len(recipe_ingredients)) #evaluate total possible score
         points = 0
 
         matched = [] #create a list of ingredients in the recipe the user has
@@ -162,6 +162,6 @@ if __name__ == "__main__":
             print(meal['strInstructions'])
 
             break
-        
+
         else:
             print('Answer must be Y or N!')
